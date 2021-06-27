@@ -19,8 +19,8 @@ module.exports = {
         var permissions = [];
         var acknowledgements = 'None';
         let whoisPermErr = new Discord.MessageEmbed()
-        .setTitle("**User Permission Error!**")
-        .setDescription("**Sorry, you don't have permissions to use this! ❌**")
+        .setTitle("**Error de permiso de usuario!**")
+        .setDescription("**Lo siento, no tienes permisos para usar esto.! ❌**")
 
         if(!message.channel.permissionsFor(message.author).has("MANAGE_MESSAGES") ) return message.channel.send(whoisPermErr)
 
@@ -78,16 +78,16 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
             .setDescription(`<@${member.user.id}>`)
             .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL())
-            .setColor('#2F3136')
+            .setColor('#ff1616')
             .setFooter(`ID: ${message.author.id}`)
             .setThumbnail(member.user.displayAvatarURL())
             .setTimestamp()
-            .addField("__Status__",`${status[member.user.presence.status]}`, true)
-            .addField('__Joined at:__ ',`${moment(member.joinedAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`, true)
-            .addField('__Created On__', member.user.createdAt.toLocaleString(), true)
+            .addField("__Estado__",`${status[member.user.presence.status]}`, true)
+            .addField('__Se unió:__ ',`${moment(member.joinedAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`, true)
+            .addField('__Creado en__', member.user.createdAt.toLocaleString(), true)
             .addField(`\n__Roles [${member.roles.cache.filter(r => r.id !== message.guild.id).map(roles => `\`${roles.name}\``).length}]__`,`${member.roles.cache.filter(r => r.id !== message.guild.id).map(roles => `<@&${roles.id }>`).join(" **|** ") || "No Roles"}`, true)
-            .addField("\n__Acknowledgements:__ ", `${acknowledgements}`, true)
-            .addField("\n__Permissions:__ ", `${permissions.join(` | `)}`);
+            .addField("\n__Agradecimientos:__ ", `${acknowledgements}`, true)
+            .addField("\n__Permisos:__ ", `${permissions.join(` | `)}`);
             
         message.channel.send({embed});
     

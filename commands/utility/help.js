@@ -28,10 +28,10 @@ run: async (bot, message, args) => {
 
 if(message.content.toLowerCase() === `${prefix}help`){
     var log = new Discord.MessageEmbed()
-    .setTitle("**Help Menu: Main**")
-    .setColor(`#d9d9d9`)
-    .addField(`**👑Moderation**`, `[ \`${prefix}help mod\` ]`, true)
-    .addField(`**⚙️Utility**`, `[ \`${prefix}help utility\` ]`, true)
+    .setTitle("**Menu de Ayuda: Principal**")
+    .setColor(`#ff1616`)
+    .addField(`**👑Moderación**`, `[ \`${prefix}help mod\` ]`, true)
+    .addField(`**⚙️Utilidades**`, `[ \`${prefix}help utility\` ]`, true)
 
 message.channel.send(log);
 } 
@@ -39,16 +39,16 @@ else if(args[0].toLowerCase() === "mod") {
     var commandArray = "1) Ban \n2) Kick\n3) Whois\n4) Unban\n5) Warn\n6) Mute\n7) Purge\n8) Slowmode \n9) Nick \n10) Roleinfo"
     var commandA2 = "11) Rolememberinfo\n12) Setmodlog\n13) Disablemodlog\n14) Lock (Lock the channel)\n15) Unlock (Unlock the channel)\n16) Lockdown (Fully Lock the whole server. [FOR EMRGENCIES ONLY]) \n17) Hackban\\forceban <id>"
     
-    pageN1 = "**\n💠Commands: **\n`\`\`js\n" + commandArray + "\`\`\`";
-    pageN2 = "**\n💠Commands: **\n`\`\`js\n" + commandA2 + "\`\`\`";
+    pageN1 = "**\n💠Comandos: **\n`\`\`js\n" + commandArray + "\`\`\`";
+    pageN2 = "**\n💠Comandos: **\n`\`\`js\n" + commandA2 + "\`\`\`";
     
     let pages = [pageN1, pageN2]
     let page = 1 
 
     var embed = new Discord.MessageEmbed()
-        .setTitle('**Help Menu: [Moderation]👑**')
-        .setColor("#d9d9d9") // Set the color
-        .setFooter(`Page ${page} of ${pages.length}`, bot.user.displayAvatarURL())
+        .setTitle('**Menu de Ayuda: [Moderación]👑**')
+        .setColor("#ff1616") // Set the color
+        .setFooter(`Pagina ${page} de ${pages.length}`, bot.user.displayAvatarURL())
         .setDescription(pages[page-1])
 
         message.channel.send({embed}).then(msg => {
@@ -75,7 +75,7 @@ else if(args[0].toLowerCase() === "mod") {
                 if (page === pages.length) return r.users.remove(r.users.cache.filter(u => u === message.author).first())
                 page++
                 embed.setDescription(pages[page-1])
-                embed.setFooter(`Page ${page} of ${pages.length}`, bot.user.displayAvatarURL())
+                embed.setFooter(`Pagina ${page} de ${pages.length}`, bot.user.displayAvatarURL())
                 msg.edit(embed)
                 r.users.remove(r.users.cache.filter(u => u === message.author).first())
             })
@@ -87,14 +87,14 @@ else if(args[0].toLowerCase() === "mod") {
 
 else if(args[0].toLowerCase() === "util") {
     var embed = new Discord.MessageEmbed()
-    .setTitle('**Help Menu: [Utility]**')
-    .setColor("#d9d9d9") // Set the color
+    .setTitle('**Menu de Ayuda: [Utilidades]**')
+    .setColor("#ff1616") // Set the color
     .setDescription("```js" + `1) Prefix [${prefix}help prefix for more info]\n 2) Help [${prefix}help for more info]` + "```")
 }
 
 else {
     const embed = new Discord.MessageEmbed()
-    .setColor("#d9d9d9")
+    .setColor("#ff1616")
     .setAuthor(`${message.guild.me.displayName} Help`, message.guild.iconURL())
     .setThumbnail(bot.user.displayAvatarURL())
 
